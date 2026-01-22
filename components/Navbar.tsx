@@ -4,7 +4,6 @@ import { useState } from "react";
 import "../components/Navbar.css";
 import Hero from "../components/Hero";
 
-
 const navItems = [
   { label: "Product", href: "#" },
   { label: "Solutions", href: "#" },
@@ -17,20 +16,25 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav>
+      <nav className="navbar">
         <a href="#" className="logo">
           Spotter
         </a>
 
-        <ul className="nav-links">
+        <ul className={`nav-links ${open ? "active" : ""}`}>
           {navItems.map((item) => (
             <li key={item.label}>
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} onClick={() => setOpen(false)}>
+                {item.label}
+              </a>
             </li>
           ))}
+          <li>
+            <button className="cta-button" onClick={() => setOpen(false)}>
+              Get Started
+            </button>
+          </li>
         </ul>
-
-        <button className="cta-button">Get Started</button>
 
         <button
           aria-label={open ? "Close menu" : "Open menu"}
@@ -52,7 +56,11 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-            <button>Get Started</button>
+            <li>
+              <button className="cta-button" onClick={() => setOpen(false)}>
+                Get Started
+              </button>
+            </li>
           </ul>
         </div>
       )}

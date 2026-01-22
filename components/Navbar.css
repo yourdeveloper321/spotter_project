@@ -1,23 +1,23 @@
-/* Navbar.css */
-
+/* -------------------- Header & Navbar -------------------- */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: white;
+  background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
 }
 
-nav {
+nav.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 1rem 2rem;
 }
 
+/* -------------------- Logo -------------------- */
 .logo {
   font-size: 1.875rem;
   font-weight: 800;
@@ -30,10 +30,13 @@ nav {
   color: #4338ca;
 }
 
+/* -------------------- Desktop Nav Links -------------------- */
 .nav-links {
-  display: none;
-  gap: 2.5rem;
+  display: flex;
+  gap: 2rem;
   list-style: none;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
 .nav-links li a {
@@ -44,10 +47,6 @@ nav {
   transition: color 0.2s;
 }
 
-.nav-links li a:hover {
-  color: #4f46e5;
-}
-
 .nav-links li a::after {
   content: "";
   position: absolute;
@@ -56,33 +55,39 @@ nav {
   width: 0;
   height: 2px;
   background-color: #4f46e5;
-  transition: width 0.2s;
+  transition: width 0.3s;
 }
 
 .nav-links li a:hover::after {
   width: 100%;
 }
 
+.nav-links li a:hover {
+  color: #4f46e5;
+}
+
+/* -------------------- CTA Button -------------------- */
 .cta-button {
-  display: none;
-  background: linear-gradient(to right, #4f46e5, #8b5cf6);
-  color: white;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+  color: #fff;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
   border-radius: 9999px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background 0.3s;
 }
 
 .cta-button:hover {
   transform: scale(1.05);
-  background: linear-gradient(to right, #4338ca, #7c3aed);
+  background: linear-gradient(90deg, #4338ca, #7c3aed);
 }
 
+/* -------------------- Hamburger Button -------------------- */
 .menu-button {
-  font-size: 1.875rem;
+  display: none;
+  font-size: 2rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -94,19 +99,24 @@ nav {
   color: #4f46e5;
 }
 
+/* -------------------- Mobile Menu -------------------- */
 .mobile-menu {
   display: none;
-  background-color: white;
-  border-top: 1px solid #e5e7eb;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.2s ease-out forwards;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: slideDown 0.3s ease;
 }
 
 .mobile-menu ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
   list-style: none;
 }
 
@@ -121,47 +131,54 @@ nav {
   color: #4f46e5;
 }
 
-.mobile-menu button {
+.mobile-menu .cta-button {
   width: 100%;
-  background: linear-gradient(to right, #4f46e5, #8b5cf6);
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1.5rem;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, background 0.2s;
 }
 
-.mobile-menu button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(to right, #4338ca, #7c3aed);
-}
-
+/* -------------------- Slide Down Animation -------------------- */
 @keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
-@media screen and (min-width: 768px) {
+/* -------------------- Responsive -------------------- */
+@media screen and (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
   .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
     display: flex;
   }
 
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .nav-links {
+    display: flex !important;
+  }
+
   .cta-button {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   .menu-button {
-    display: none;
+    display: none !important;
   }
 
   .mobile-menu {
