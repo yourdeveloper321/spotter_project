@@ -5,11 +5,12 @@ import "../components/Navbar.css";
 import Hero from "../components/Hero";
 
 const navItems = [
-  { label: "Product", href: "#" },
-  { label: "Solutions", href: "#" },
-  { label: "Pricing", href: "#" },
-  { label: "Company", href: "#" },
+  { label: "Product", href: "https://spotter.ai/product" },
+  { label: "Solutions", href: "https://spotter.ai/solutions" },
+  { label: "Pricing", href: "https://spotter.ai/pricing" },
+  { label: "Company", href: "https://spotter.ai/company" },
 ];
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
