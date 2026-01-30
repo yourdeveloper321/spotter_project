@@ -1,16 +1,13 @@
-"use client";
-
-import { useState } from "react";
-import "../components/Navbar.css";
-import Hero from "../components/Hero";
+'use client';
+import { useState } from 'react';
+import './Navbar.css';
 
 const navItems = [
-  { label: "Product", href: "https://spotter.ai/product" },
-  { label: "Solutions", href: "https://spotter.ai/solutions" },
-  { label: "Pricing", href: "https://spotter.ai/pricing" },
-  { label: "Company", href: "https://spotter.ai/company" },
+  { label: 'Product', href: 'https://www.spot.ai/#product' },
+  { label: 'Solutions', href: 'https://www.spot.ai/#solutions' },
+  { label: 'Pricing', href: 'https://www.spot.ai/pricing' },
+  { label: 'Company', href: 'https://www.spot.ai/#company' },
 ];
-
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -18,12 +15,10 @@ export default function Navbar() {
   return (
     <header>
       <nav className="navbar">
-        <a href="#" className="logo">
-          Spotter
-        </a>
+        <a href="#" className="logo">Spotter</a>
 
-        <ul className={`nav-links ${open ? "active" : ""}`}>
-          {navItems.map((item) => (
+        <ul className={`nav-links ${open ? 'active' : ''}`}>
+          {navItems.map(item => (
             <li key={item.label}>
               <a href={item.href} onClick={() => setOpen(false)}>
                 {item.label}
@@ -31,36 +26,30 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <button className="cta-button" onClick={() => setOpen(false)}>
-              Get Started
-            </button>
+            <button className="cta-button" onClick={() => setOpen(false)}>Get Started</button>
           </li>
         </ul>
 
         <button
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
           className="menu-button"
         >
-          {open ? "✕" : "☰"}
+          {open ? '✕' : '☰'}
         </button>
       </nav>
 
       {open && (
         <div className="mobile-menu">
           <ul>
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <li key={item.label}>
-                <a href={item.href} onClick={() => setOpen(false)}>
-                  {item.label}
-                </a>
+                <a href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
               </li>
             ))}
             <li>
-              <button className="cta-button" onClick={() => setOpen(false)}>
-                Get Started
-              </button>
+              <button className="cta-button" onClick={() => setOpen(false)}>Get Started</button>
             </li>
           </ul>
         </div>
